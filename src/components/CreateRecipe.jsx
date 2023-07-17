@@ -17,6 +17,16 @@ const CreateRecipe = () => {
     setRecipe({...recipe , [name] : value});
   }
 
+  const handleIngredientChange = (e , ind)=>{
+    const {value} = e.target;
+    const ingredients  = recipe.ingredients;
+    ingredients[ind] = value
+  }
+
+  const addIngredient = (e) =>{
+      setRecipe({...recipe,  ingredients : [...recipe.ingredients , ""]});
+  }
+
   return (
     <div>
       <form className='login-form'>
@@ -31,17 +41,18 @@ const CreateRecipe = () => {
         </div>
 
         <div className='inner-login'>
-          <label>Ingredients : </label>
-          {recipe.ingredients.map((ingredient , index)=>{
-              <input
+          <label htmlFor="ingredients">Ingredients</label>
+          {recipe.ingredients.map((ingredient, index) => (
+            <input
               key={index}
               type="text"
               name="ingredients"
               value={ingredient}
-              // onChange={(event) => handleIngredientChange(event, index)}
+              onChange={(event) => handleIngredientChange(event, index)}
             />
-          })}
-          <input type="text" name='name' />
+          ))}
+          
+          <button type="button" onClick={addIngredient}>Add Ingredient</button>
         </div>
 
         <div className='inner-login'>
