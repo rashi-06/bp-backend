@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/user.js";
+import { recipesRouter } from "./routes/Recipes.js";
 import dotenv from "dotenv";
 dotenv.config({ silent: process.env.NODE_ENV === 'production' });
 
@@ -15,6 +16,8 @@ app.use(cors());
 
 
 app.use("/auth" , userRouter)
+app.use("/recipes", recipesRouter);
+
 
 app.listen(PORT , ()=>{
     console.log(`server is running on port : ${PORT}`);

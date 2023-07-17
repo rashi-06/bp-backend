@@ -18,7 +18,7 @@ router.get("/" , async(req,res)=>{
 })
 
 
-router.post("/", async(req ,res) =>{
+router.post("/createRecipe", async(req ,res) =>{
     const newRecipe = req.body;
     try{
         const respo = await newRecipe.save();
@@ -77,3 +77,5 @@ router.get("/savedRecipes" , async(req,res) =>{
         res.json(err);
     }
 })
+
+export {router as recipesRouter};
